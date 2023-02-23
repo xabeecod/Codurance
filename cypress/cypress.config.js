@@ -10,7 +10,9 @@ module.exports = defineConfig({
       baseUrl: "http://api.openweathermap.org/",
       APIkey: "c867e0d33a197ee4c986b13a9338a32d",
       lat001: "57",
-      lat001: "2" ,
+      lon001: "2" ,
+      lat002: "41",
+      lon002: "2" ,
       },
   },
-});
+})

@@ -1,4 +1,4 @@
-
+node_modules
 cypress/node_modules/.bin/cypress
 cypress/node_modules/.bin/cypress.cmd
 cypress/node_modules/.bin/cypress.ps1
