@@ -60,7 +60,7 @@ public class myGETrequest {
                 throw new RuntimeException(e);
             }
             System.out.println("JSON String Result " + response.toString());
-            if (response.toString().contains("country")) { System.out.println("FAIL!, no country!"); }
+            if (response.toString().contains("country")==false) { System.out.println("FAIL!, no country!"); }
             // add + cases
         } else {
             System.out.println("GET NOT WORKED");
