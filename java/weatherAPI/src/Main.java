@@ -17,8 +17,8 @@ public class Main {
         String APIkey = "c867e0d33a197ee4c986b13a9338a32d";
         URL urlForGetRequest = null;
         new myGETrequest(baseUrl, lat, lon, APIkey);
-        for (int latitude = -50; latitude <= 50; latitude++) {              // from -90 to 90, but may be excessive
-            for (int longitude = -50; longitude <= 50; longitude++) {       // from -180 to 180
+        for (int latitude =  0; latitude <= 40; latitude++) {              // from -90 to 90, but may be excessive
+            for (int longitude =  0; longitude <= 50; longitude++) {       // from -180 to 180
                 new myGETrequest(baseUrl, String.valueOf(latitude), String.valueOf(longitude), APIkey);
 
             }

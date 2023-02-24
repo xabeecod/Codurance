@@ -113,7 +113,7 @@ describe('OpenWeather', () => {
              
           })
 
-  it('Tiem request FR', () => {
+  it('Request FR', () => {
 
     cy.api('GET', Cypress.env("baseUrl")+"data/2.5/weather?lat="
         +Cypress.env("lat003")+"&lon="
@@ -126,7 +126,7 @@ describe('OpenWeather', () => {
 
         })
 
-  it('Tiem request CO', () => {
+  it('Request CO', () => {
 
   cy.api('GET', Cypress.env("baseUrl")+"data/2.5/weather?lat="
       +Cypress.env("lat004")+"&lon="
@@ -152,16 +152,75 @@ describe('OpenWeather', () => {
 
         })
 
-        it('Tiem request HU', () => {
+  it('Request HU', () => {
 
-          cy.api('POST', Cypress.env("baseUrl")+"data/2.5/weather?lat="
-              +Cypress.env("lat006")+"&lon="
-              +Cypress.env("lon006")+"&appid="
-              +Cypress.env("APIkey"))
-              .should((response) => {
-                expect(response.status).to.eq(200)
-                })
-                cy.contains('Budapest').should('exist')
-              })
+    cy.api('POST', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+        +Cypress.env("lat006")+"&lon="
+        +Cypress.env("lon006")+"&appid="
+        +Cypress.env("APIkey"))
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          })
+          cy.contains('Budapest').should('exist')
+  })
 
- })
+  it('Request AFG', () => {
+
+    cy.api('POST', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+        +Cypress.env("lat007")+"&lon="
+        +Cypress.env("lon007")+"&appid="
+        +Cypress.env("APIkey"))
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          })
+          cy.contains('Kabul').should('exist')
+  })
+
+  it('Request Antartica', () => {
+
+    cy.api('POST', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+        +Cypress.env("lat008")+"&lon="
+        +Cypress.env("lon008")+"&appid="
+        +Cypress.env("APIkey"))
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          })
+          cy.contains('Globe').should('exist')
+  })
+
+  it('Request Granada', () => {
+
+    cy.api('GET', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+        +Cypress.env("lat009")+"&lon="
+        +Cypress.env("lon009")+"&appid="
+        +Cypress.env("APIkey"))
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          })
+          cy.contains('Granada').should('exist')
+          cy.contains('ES').should('exist')
+  })
+
+
+it('Wrong latitude!', () => {
+
+  cy.api({
+    method: 'GET', 
+    url:    Cypress.env("baseUrl")+"data/2.5/weather?lat="
+          +Cypress.env("lat010")+"&lon="
+          +Cypress.env("lon010")+"&appid="
+          +Cypress.env("APIkey"),
+    failOnStatusCode: false,
+    headers:
+    {
+        'Authorization': 'Basic dXNlckB1c2VyOnVzZXI=',
+        'Content-Type': 'text/plain'
+    }})
+      .should((response) => {
+        expect(response.status).to.eq(400)
+        })
+        cy.contains('wrong latitude"').should('exist')
+})  
+
+
+})
