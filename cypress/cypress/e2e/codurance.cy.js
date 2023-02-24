@@ -57,8 +57,8 @@ describe('OpenWeather', () => {
 
     it('Test nested values', () => {
         cy.api('GET', Cypress.env("baseUrl")+"data/2.5/weather?lat="
-        +Cypress.env("lat001")+"&lon="
-        +Cypress.env("lon001")+"&appid="
+        +Cypress.env("lat002")+"&lon="
+        +Cypress.env("lon002")+"&appid="
         +Cypress.env("APIkey"))
         .should((response) => {
             expect(response.status).to.eq(200)
@@ -112,4 +112,56 @@ describe('OpenWeather', () => {
              cy.contains('"cod"').should('exist')
              
           })
+
+  it('Tiem request FR', () => {
+
+    cy.api('GET', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+        +Cypress.env("lat003")+"&lon="
+        +Cypress.env("lon003")+"&appid="
+        +Cypress.env("APIkey"))
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          })
+          cy.contains('"Paris"').should('exist')
+
+        })
+
+  it('Tiem request CO', () => {
+
+  cy.api('GET', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+      +Cypress.env("lat004")+"&lon="
+      +Cypress.env("lon004")+"&appid="
+      +Cypress.env("APIkey"))
+      .should((response) => {
+        expect(response.status).to.eq(200)
+        })
+        cy.contains('"Medellín"').should('exist')
+
+      })
+
+  it('Tiem request US', () => {
+
+    cy.api('POST', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+        +Cypress.env("lat005")+"&lon="
+        +Cypress.env("lon005")+"&appid="
+        +Cypress.env("APIkey"))
+        .should((response) => {
+          expect(response.status).to.eq(200)
+          })
+          cy.contains('"New York"').should('exist')
+
+        })
+
+        it('Tiem request HU', () => {
+
+          cy.api('POST', Cypress.env("baseUrl")+"data/2.5/weather?lat="
+              +Cypress.env("lat006")+"&lon="
+              +Cypress.env("lon006")+"&appid="
+              +Cypress.env("APIkey"))
+              .should((response) => {
+                expect(response.status).to.eq(200)
+                })
+                cy.contains('Budapest').should('exist')
+              })
+
  })
