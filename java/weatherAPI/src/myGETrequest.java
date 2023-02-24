@@ -6,6 +6,8 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import static java.lang.Thread.sleep;
+
 public class myGETrequest {
 
     public myGETrequest(String baseUrl, String lat, String lon, String APIkey) {
@@ -60,7 +62,12 @@ public class myGETrequest {
                 throw new RuntimeException(e);
             }
             System.out.println("JSON String Result " + response.toString());
-            if (response.toString().contains("country")==false) { System.out.println("FAIL!, no country!"); }
+            if (response.toString().contains("country")==false) {
+                System.out.println("FAIL!, no country!");
+            }
+            if (response.toString().contains("\"ES\"")) {
+                System.out.println("Found ES!!!!!!  <==============================================================================================");
+            }
             // add + cases
         } else {
             System.out.println("GET NOT WORKED");
